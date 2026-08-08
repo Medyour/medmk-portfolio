@@ -7,3 +7,64 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-slate-50 text-slate-800 antialiased;
+    }
+
+    ::selection {
+        @apply bg-sky-200 text-slate-950;
+    }
+
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-sky-700;
+    }
+}
+
+@layer components {
+    .page-container {
+        @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+    }
+
+    .section-space {
+        @apply py-20 sm:py-24 lg:py-28;
+    }
+
+    .eyebrow {
+        @apply text-sm font-semibold tracking-[0.16em] text-sky-800 uppercase;
+    }
+
+    .button-primary {
+        @apply inline-flex min-h-12 items-center justify-center rounded-lg bg-sky-800 px-6 py-3 text-center font-semibold text-white transition hover:bg-sky-900 focus-visible:outline-sky-800;
+    }
+
+    .button-secondary {
+        @apply inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-center font-semibold text-slate-900 transition hover:border-sky-700 hover:text-sky-800;
+    }
+
+    .mobile-link {
+        @apply flex min-h-11 items-center rounded-lg px-4 py-2 font-medium text-slate-800 transition hover:bg-slate-100 hover:text-sky-800 focus-visible:outline-sky-700;
+    }
+
+    .form-control {
+        @apply mt-2 block min-h-12 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-700/20;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
