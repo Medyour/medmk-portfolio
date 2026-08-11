@@ -3,8 +3,13 @@
 namespace Tests\Feature;
 
 use App\Mail\ContactRequestReceived;
+use App\Providers\AppServiceProvider;
+use Illuminate\Cache\FileStore;
+use Illuminate\Cache\RateLimiter;
 use Illuminate\Database\Events\QueryExecuted;
+use Illuminate\Session\EncryptedStore;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\Facades\Mail;
 use RuntimeException;
 use Tests\TestCase;
@@ -19,6 +24,16 @@ class ContactFormTest extends TestCase
         config()->set('contact.recipient.name', 'Portfolio Owner');
         config()->set('mail.from.address', 'sender@example.com');
         config()->set('mail.from.name', 'Portfolio Website');
+
+        $this->withServerVariables([
+            'REMOTE_ADDR' => sprintf(
+                '2001:db8:%x:%x:%x:%x::1',
+                random_int(0, 65535),
+                random_int(0, 65535),
+                random_int(0, 65535),
+                random_int(0, 65535),
+            ),
+        ]);
     }
 
     public function test_valid_request_sends_an_email_with_the_visitor_as_reply_to(): void
@@ -100,9 +115,19 @@ class ContactFormTest extends TestCase
         Mail::assertSentCount(5);
     }
 
+    public function test_rate_limiter_uses_its_dedicated_file_store_by_default(): void
+    {
+        $this->assertSame('file', config('cache.limiter'));
+        $this->assertInstanceOf(
+            FileStore::class,
+            app('cache')->store(config('cache.limiter'))->getStore(),
+        );
+    }
+
     public function test_request_does_not_write_to_the_database(): void
     {
         Mail::fake();
+        $this->configureDatabaseFreeContactState();
         $mutatingQueries = [];
 
         DB::listen(function (QueryExecuted $query) use (&$mutatingQueries): void {
@@ -111,10 +136,42 @@ class ContactFormTest extends TestCase
             }
         });
 
-        $this->post(route('contact.store'), $this->validPayload())
+        $this->withServerVariables(['REMOTE_ADDR' => '192.0.2.10'])
+            ->post(route('contact.store'), $this->validPayload())
             ->assertSessionHas('contact_success');
 
         $this->assertSame([], $mutatingQueries);
+    }
+
+    public function test_validation_error_uses_encrypted_file_state_without_database_writes(): void
+    {
+        Mail::fake();
+        $this->configureDatabaseFreeContactState();
+        $mutatingQueries = [];
+
+        $this->assertSame('file', config('session.driver'));
+        $this->assertTrue(config('session.encrypt'));
+        $this->assertInstanceOf(EncryptedStore::class, app('session')->driver());
+        $this->assertSame('file', config('cache.limiter'));
+        $this->assertInstanceOf(
+            FileStore::class,
+            app('cache')->store(config('cache.limiter'))->getStore(),
+        );
+
+        DB::listen(function (QueryExecuted $query) use (&$mutatingQueries): void {
+            if (preg_match('/^\s*(insert|update|delete)\b/i', $query->sql)) {
+                $mutatingQueries[] = $query->sql;
+            }
+        });
+
+        $this->withServerVariables(['REMOTE_ADDR' => '192.0.2.11'])
+            ->from(route('home'))
+            ->post(route('contact.store'), $this->validPayload(['email' => 'invalid']))
+            ->assertSessionHasErrors(['email'], null, 'contact')
+            ->assertSessionHasInput('name', 'Marie Martin');
+
+        $this->assertSame([], $mutatingQueries);
+        Mail::assertNothingSent();
     }
 
     public function test_success_state_is_displayed(): void
@@ -174,5 +231,18 @@ class ContactFormTest extends TestCase
             'consent' => '1',
             'website' => '',
         ], $overrides);
+    }
+
+    private function configureDatabaseFreeContactState(): void
+    {
+        config()->set([
+            'session.driver' => 'file',
+            'session.encrypt' => true,
+            'cache.limiter' => 'file',
+        ]);
+
+        $this->app->forgetInstance(RateLimiter::class);
+        Facade::clearResolvedInstance(RateLimiter::class);
+        (new AppServiceProvider($this->app))->boot();
     }
 }

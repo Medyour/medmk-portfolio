@@ -8,7 +8,7 @@
         <div class="mt-10 space-y-9 text-base leading-8 text-slate-700">
             <section>
                 <h2 class="text-2xl font-semibold text-slate-950">Formulaire de contact</h2>
-                <p class="mt-3">Les informations envoyées au moyen du formulaire servent uniquement à comprendre votre demande et à vous répondre. Elles sont transmises par e-mail au destinataire configuré pour le site et ne sont enregistrées dans aucune base de données par l’application.</p>
+                <p class="mt-3">Les informations envoyées au moyen du formulaire servent uniquement à comprendre votre demande et à vous répondre. Elles sont transmises par e-mail au destinataire configuré pour le site. L’application ne crée et n’enregistre aucune fiche de contact dans une base de données.</p>
             </section>
             <section>
                 <h2 class="text-2xl font-semibold text-slate-950">Données concernées</h2>
@@ -16,7 +16,8 @@
             </section>
             <section>
                 <h2 class="text-2xl font-semibold text-slate-950">Sécurité et réaffichage</h2>
-                <p class="mt-3">Le formulaire utilise une protection contre les soumissions frauduleuses et limite la fréquence des tentatives. Après une erreur, les champs utiles peuvent être conservés temporairement dans la session afin de réafficher votre saisie. Le consentement et le champ de protection antispam ne sont pas conservés pour le réaffichage.</p>
+                <p class="mt-3">Après une erreur, les champs utiles sont conservés temporairement dans une session chiffrée stockée dans des fichiers afin de réafficher votre saisie. Le consentement et le champ de protection antispam ne sont pas conservés pour le réaffichage.</p>
+                <p class="mt-3">Pour limiter les abus, l’application conserve temporairement dans un stockage fichier un compteur associé à un identifiant technique dérivé de l’adresse IP. Ce compteur n’est pas enregistré dans la base de données.</p>
                 <p class="mt-3">N’envoyez pas de secret, d’identifiant, de donnée client ou d’information professionnelle confidentielle.</p>
             </section>
         </div>
