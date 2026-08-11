@@ -91,43 +91,84 @@
                 <p class="eyebrow">Contact</p>
                 <h2 id="contact-title" class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">Étudier mon besoin</h2>
                 <p class="mt-6 text-lg leading-8 text-slate-600">Décrivez simplement le processus actuel, les outils concernés, la difficulté rencontrée et le résultat recherché.</p>
-                <p id="contact-note" class="mt-5 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm leading-6 text-sky-950">
-                    L’envoi du formulaire n’est pas encore activé. Vous pouvez préparer ces informations ci-contre puis les transmettre par e-mail.
-                </p>
-                <a class="button-primary mt-7" href="mailto:med.mkirchel@gmail.com?subject=Étudier%20mon%20besoin">Étudier mon besoin</a>
-                <p class="mt-3 text-sm text-slate-600">Écrire à <a class="font-semibold text-sky-800 underline underline-offset-4" href="mailto:med.mkirchel@gmail.com">med.mkirchel@gmail.com</a></p>
+                <p id="contact-note" class="mt-5 rounded-xl border border-sky-200 bg-sky-50 p-4 text-sm leading-6 text-sky-950">Les informations sont transmises uniquement par e-mail afin de répondre à votre demande. Aucune demande n’est enregistrée dans une base de données.</p>
             </div>
 
-            <form aria-describedby="contact-note" class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8" onsubmit="return false">
-                <div class="grid gap-6 sm:grid-cols-2">
-                    <label class="block font-medium text-slate-900">Nom <span aria-hidden="true">*</span>
-                        <input class="form-control" type="text" name="name" autocomplete="name" required>
-                    </label>
-                    <label class="block font-medium text-slate-900">E-mail <span aria-hidden="true">*</span>
-                        <input class="form-control" type="email" name="email" autocomplete="email" required>
-                    </label>
-                </div>
-                <label class="mt-6 block font-medium text-slate-900">Organisation <span class="text-sm font-normal text-slate-500">(facultatif)</span>
-                    <input class="form-control" type="text" name="organization" autocomplete="organization">
-                </label>
-                <label class="mt-6 block font-medium text-slate-900">Besoin <span aria-hidden="true">*</span>
-                    <select class="form-control" name="need" required>
-                        <option value="">Sélectionner un besoin</option>
-                        <option>Automatiser un processus</option>
-                        <option>Connecter des systèmes</option>
-                        <option>Fiabiliser des données</option>
-                        <option>Autre besoin</option>
-                    </select>
-                </label>
-                <label class="mt-6 block font-medium text-slate-900">Message <span aria-hidden="true">*</span>
-                    <textarea class="form-control min-h-36 resize-y" name="message" required></textarea>
-                </label>
-                <label class="mt-6 flex items-start gap-3 text-sm leading-6 text-slate-700">
-                    <input class="mt-1 size-5 shrink-0 rounded border-slate-300 text-sky-800 focus:ring-sky-700" type="checkbox" name="consent">
-                    <span>J’accepte l’utilisation de ces informations pour répondre à ma demande. Voir la <a class="font-semibold text-sky-800 underline underline-offset-4" href="{{ route('privacy') }}">politique de confidentialité</a>.</span>
-                </label>
-                <p class="mt-6 text-sm font-medium text-slate-600">Structure préparatoire — aucun envoi ni stockage n’est effectué depuis ce site.</p>
-            </form>
+            <div>
+                @if (session('contact_success'))
+                    <div data-contact-status tabindex="-1" role="status" class="mb-6 rounded-xl border border-emerald-300 bg-emerald-50 p-4 font-medium text-emerald-950">
+                        {{ session('contact_success') }}
+                    </div>
+                @endif
+
+                @if (session('contact_error'))
+                    <div data-contact-status tabindex="-1" role="alert" class="mb-6 rounded-xl border border-red-300 bg-red-50 p-4 font-medium text-red-950">
+                        {{ session('contact_error') }}
+                    </div>
+                @endif
+
+                @if ($errors->contact->any())
+                    <div data-contact-status tabindex="-1" role="alert" aria-labelledby="contact-errors-title" class="mb-6 rounded-xl border border-red-300 bg-red-50 p-4 text-red-950">
+                        <p id="contact-errors-title" class="font-semibold">Vérifiez les informations du formulaire.</p>
+                        <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
+                            @foreach ($errors->contact->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method="POST" action="{{ route('contact.store') }}" aria-describedby="contact-note" class="relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                    @csrf
+
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="website">Site web</label>
+                        <input id="website" type="text" name="website" value="" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="grid gap-6 sm:grid-cols-2">
+                        <div>
+                            <label for="name" class="block font-medium text-slate-900">Nom <span aria-hidden="true">*</span></label>
+                            <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" autocomplete="name" maxlength="100" required @error('name', 'contact') aria-invalid="true" aria-describedby="name-error" @enderror>
+                            @error('name', 'contact')<p id="name-error" class="form-error">{{ $message }}</p>@enderror
+                        </div>
+                        <div>
+                            <label for="email" class="block font-medium text-slate-900">E-mail <span aria-hidden="true">*</span></label>
+                            <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" autocomplete="email" maxlength="254" required @error('email', 'contact') aria-invalid="true" aria-describedby="email-error" @enderror>
+                            @error('email', 'contact')<p id="email-error" class="form-error">{{ $message }}</p>@enderror
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="organization" class="block font-medium text-slate-900">Organisation <span class="text-sm font-normal text-slate-500">(facultatif)</span></label>
+                        <input id="organization" class="form-control" type="text" name="organization" value="{{ old('organization') }}" autocomplete="organization" maxlength="150" @error('organization', 'contact') aria-invalid="true" aria-describedby="organization-error" @enderror>
+                        @error('organization', 'contact')<p id="organization-error" class="form-error">{{ $message }}</p>@enderror
+                    </div>
+                    <div class="mt-6">
+                        <label for="category" class="block font-medium text-slate-900">Catégorie du besoin <span aria-hidden="true">*</span></label>
+                        <select id="category" class="form-control" name="category" required @error('category', 'contact') aria-invalid="true" aria-describedby="category-error" @enderror>
+                            <option value="">Sélectionner un besoin</option>
+                            @foreach (config('contact.categories') as $value => $label)
+                                <option value="{{ $value }}" @selected(old('category') === $value)>{{ $label }}</option>
+                            @endforeach
+                        </select>
+                        @error('category', 'contact')<p id="category-error" class="form-error">{{ $message }}</p>@enderror
+                    </div>
+                    <div class="mt-6">
+                        <label for="message" class="block font-medium text-slate-900">Message <span aria-hidden="true">*</span></label>
+                        <textarea id="message" class="form-control min-h-36 resize-y" name="message" minlength="20" maxlength="5000" required @error('message', 'contact') aria-invalid="true" aria-describedby="message-error" @enderror>{{ old('message') }}</textarea>
+                        @error('message', 'contact')<p id="message-error" class="form-error">{{ $message }}</p>@enderror
+                    </div>
+                    <div class="mt-6">
+                        <label class="flex items-start gap-3 text-sm leading-6 text-slate-700">
+                            <input class="mt-1 size-5 shrink-0 rounded border-slate-300 text-sky-800 focus:ring-sky-700" type="checkbox" name="consent" value="1" required @error('consent', 'contact') aria-invalid="true" aria-describedby="consent-error" @enderror>
+                            <span>J’accepte l’utilisation de ces informations pour répondre à ma demande. Voir la <a class="font-semibold text-sky-800 underline underline-offset-4" href="{{ route('privacy') }}">politique de confidentialité</a>.</span>
+                        </label>
+                        @error('consent', 'contact')<p id="consent-error" class="form-error">{{ $message }}</p>@enderror
+                    </div>
+                    <button data-contact-submit type="submit" class="button-primary mt-7 w-full sm:w-auto">Étudier mon besoin</button>
+                    <p class="mt-4 text-sm text-slate-600">Les champs marqués d’un astérisque sont obligatoires. N’envoyez aucun secret ni aucune donnée confidentielle.</p>
+                </form>
+            </div>
         </div>
     </section>
 </x-layout>
