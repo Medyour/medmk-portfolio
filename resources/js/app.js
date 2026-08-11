@@ -20,6 +20,9 @@ contactForm?.addEventListener('submit', () => {
 
     if (submitButton) {
         submitButton.disabled = true;
+        submitButton.setAttribute('aria-disabled', 'true');
         submitButton.textContent = 'Envoi…';
     }
+
+    contactForm.setAttribute('aria-busy', 'true');
 });

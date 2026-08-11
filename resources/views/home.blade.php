@@ -1,4 +1,22 @@
-<x-layout>
+<x-layout
+    title="Mohamed M’Kirchel — Automatisation, API et données"
+    description="Développeur senior spécialisé en automatisation de processus, intégration API, bases de données et applications web métier."
+    :canonical="route('home')"
+    :structured-data="[
+        '@context' => 'https://schema.org',
+        '@type' => 'Person',
+        'name' => 'Mohamed M’Kirchel',
+        'url' => route('home'),
+        'jobTitle' => 'Développeur senior',
+        'description' => 'Développeur senior spécialisé en automatisation, intégration API, bases de données et applications web métier.',
+        'knowsAbout' => [
+            'Automatisation de processus',
+            'Intégration API',
+            'Bases de données',
+            'Applications web métier',
+        ],
+    ]"
+>
     <section class="overflow-hidden bg-white">
         <div class="page-container grid gap-12 py-20 sm:py-24 lg:grid-cols-[1.6fr_0.8fr] lg:items-center lg:py-32">
             <div>
@@ -111,8 +129,10 @@
                     <div data-contact-status tabindex="-1" role="alert" aria-labelledby="contact-errors-title" class="mb-6 rounded-xl border border-red-300 bg-red-50 p-4 text-red-950">
                         <p id="contact-errors-title" class="font-semibold">Vérifiez les informations du formulaire.</p>
                         <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
-                            @foreach ($errors->contact->all() as $error)
-                                <li>{{ $error }}</li>
+                            @foreach (['name', 'email', 'organization', 'category', 'message', 'consent'] as $field)
+                                @error($field, 'contact')
+                                    <li><a class="font-medium underline underline-offset-4" href="#{{ $field }}">{{ $message }}</a></li>
+                                @enderror
                             @endforeach
                         </ul>
                     </div>
@@ -128,24 +148,24 @@
 
                     <div class="grid gap-6 sm:grid-cols-2">
                         <div>
-                            <label for="name" class="block font-medium text-slate-900">Nom <span aria-hidden="true">*</span></label>
-                            <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" autocomplete="name" maxlength="100" required @error('name', 'contact') aria-invalid="true" aria-describedby="name-error" @enderror>
+                            <label for="name" class="block font-medium text-slate-900">Nom <span aria-hidden="true">*</span><span class="sr-only"> (obligatoire)</span></label>
+                            <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" autocomplete="name" maxlength="100" required @error('name', 'contact') aria-invalid="true" aria-errormessage="name-error" @enderror>
                             @error('name', 'contact')<p id="name-error" class="form-error">{{ $message }}</p>@enderror
                         </div>
                         <div>
-                            <label for="email" class="block font-medium text-slate-900">E-mail <span aria-hidden="true">*</span></label>
-                            <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" autocomplete="email" maxlength="254" required @error('email', 'contact') aria-invalid="true" aria-describedby="email-error" @enderror>
+                            <label for="email" class="block font-medium text-slate-900">E-mail <span aria-hidden="true">*</span><span class="sr-only"> (obligatoire)</span></label>
+                            <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" autocomplete="email" maxlength="254" required @error('email', 'contact') aria-invalid="true" aria-errormessage="email-error" @enderror>
                             @error('email', 'contact')<p id="email-error" class="form-error">{{ $message }}</p>@enderror
                         </div>
                     </div>
                     <div class="mt-6">
                         <label for="organization" class="block font-medium text-slate-900">Organisation <span class="text-sm font-normal text-slate-500">(facultatif)</span></label>
-                        <input id="organization" class="form-control" type="text" name="organization" value="{{ old('organization') }}" autocomplete="organization" maxlength="150" @error('organization', 'contact') aria-invalid="true" aria-describedby="organization-error" @enderror>
+                        <input id="organization" class="form-control" type="text" name="organization" value="{{ old('organization') }}" autocomplete="organization" maxlength="150" @error('organization', 'contact') aria-invalid="true" aria-errormessage="organization-error" @enderror>
                         @error('organization', 'contact')<p id="organization-error" class="form-error">{{ $message }}</p>@enderror
                     </div>
                     <div class="mt-6">
-                        <label for="category" class="block font-medium text-slate-900">Catégorie du besoin <span aria-hidden="true">*</span></label>
-                        <select id="category" class="form-control" name="category" required @error('category', 'contact') aria-invalid="true" aria-describedby="category-error" @enderror>
+                        <label for="category" class="block font-medium text-slate-900">Catégorie du besoin <span aria-hidden="true">*</span><span class="sr-only"> (obligatoire)</span></label>
+                        <select id="category" class="form-control" name="category" required @error('category', 'contact') aria-invalid="true" aria-errormessage="category-error" @enderror>
                             <option value="">Sélectionner un besoin</option>
                             @foreach (config('contact.categories') as $value => $label)
                                 <option value="{{ $value }}" @selected(old('category') === $value)>{{ $label }}</option>
@@ -154,14 +174,14 @@
                         @error('category', 'contact')<p id="category-error" class="form-error">{{ $message }}</p>@enderror
                     </div>
                     <div class="mt-6">
-                        <label for="message" class="block font-medium text-slate-900">Message <span aria-hidden="true">*</span></label>
-                        <textarea id="message" class="form-control min-h-36 resize-y" name="message" minlength="20" maxlength="5000" required @error('message', 'contact') aria-invalid="true" aria-describedby="message-error" @enderror>{{ old('message') }}</textarea>
+                        <label for="message" class="block font-medium text-slate-900">Message <span aria-hidden="true">*</span><span class="sr-only"> (obligatoire)</span></label>
+                        <textarea id="message" class="form-control min-h-36 resize-y" name="message" minlength="20" maxlength="5000" required @error('message', 'contact') aria-invalid="true" aria-errormessage="message-error" @enderror>{{ old('message') }}</textarea>
                         @error('message', 'contact')<p id="message-error" class="form-error">{{ $message }}</p>@enderror
                     </div>
                     <div class="mt-6">
-                        <label class="flex items-start gap-3 text-sm leading-6 text-slate-700">
-                            <input class="mt-1 size-5 shrink-0 rounded border-slate-300 text-sky-800 focus:ring-sky-700" type="checkbox" name="consent" value="1" required @error('consent', 'contact') aria-invalid="true" aria-describedby="consent-error" @enderror>
-                            <span>J’accepte l’utilisation de ces informations pour répondre à ma demande. Voir la <a class="font-semibold text-sky-800 underline underline-offset-4" href="{{ route('privacy') }}">politique de confidentialité</a>.</span>
+                        <label for="consent" class="flex items-start gap-3 text-sm leading-6 text-slate-700">
+                            <input id="consent" class="mt-1 size-5 shrink-0 rounded border-slate-300 text-sky-800 focus:ring-sky-700" type="checkbox" name="consent" value="1" required @error('consent', 'contact') aria-invalid="true" aria-errormessage="consent-error" @enderror>
+                            <span>J’accepte l’utilisation de ces informations pour répondre à ma demande <span class="sr-only">(obligatoire)</span>. Voir la <a class="font-semibold text-sky-800 underline underline-offset-4" href="{{ route('privacy') }}">politique de confidentialité</a>.</span>
                         </label>
                         @error('consent', 'contact')<p id="consent-error" class="form-error">{{ $message }}</p>@enderror
                     </div>

@@ -1,6 +1,7 @@
 <x-layout
     title="Confidentialité — Mohamed M’Kirchel"
     description="Informations relatives à la confidentialité et au traitement des données de contact."
+    :canonical="route('privacy')"
 >
     <article class="page-container section-space max-w-4xl">
         <p class="eyebrow">Informations légales</p>

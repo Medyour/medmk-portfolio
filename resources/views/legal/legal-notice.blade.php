@@ -1,6 +1,7 @@
 <x-layout
     title="Mentions légales — Mohamed M’Kirchel"
     description="Mentions légales du site professionnel de Mohamed M’Kirchel."
+    :canonical="route('legal')"
 >
     <article class="page-container section-space max-w-4xl">
         <p class="eyebrow">Informations légales</p>

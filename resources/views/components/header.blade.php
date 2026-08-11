@@ -1,6 +1,6 @@
 <header class="relative z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
     <div class="page-container flex min-h-18 items-center justify-between gap-6">
-        <a href="{{ route('home') }}" class="rounded-sm text-base font-semibold tracking-tight text-slate-950 hover:text-sky-800">
+        <a href="{{ route('home') }}" @if(request()->routeIs('home')) aria-current="page" @endif class="rounded-sm text-base font-semibold tracking-tight text-slate-950 hover:text-sky-800">
             Mohamed M’Kirchel
         </a>
 
