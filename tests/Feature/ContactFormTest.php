@@ -99,6 +99,29 @@ class ContactFormTest extends TestCase
         Mail::assertNothingSent();
     }
 
+    public function test_honeypot_only_error_has_visible_generic_feedback_without_an_empty_list(): void
+    {
+        Mail::fake();
+
+        $response = $this->followingRedirects()
+            ->from(route('home'))
+            ->post(route('contact.store'), $this->validPayload([
+                'website' => 'https://spam.example',
+            ]));
+
+        $response
+            ->assertOk()
+            ->assertSee('Vérifiez les informations du formulaire.')
+            ->assertSee('La demande n’a pas pu être envoyée. Vérifiez le formulaire et réessayez.')
+            ->assertSee('data-contact-hidden-error', false)
+            ->assertDontSee('data-contact-error-list', false)
+            ->assertDontSee('href="#website"', false)
+            ->assertDontSee('https://spam.example')
+            ->assertSee('id="website" type="text" name="website" value=""', false);
+
+        Mail::assertNothingSent();
+    }
+
     public function test_contact_requests_are_rate_limited(): void
     {
         Mail::fake();
