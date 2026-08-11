@@ -54,6 +54,14 @@
     .form-control {
         @apply mt-2 block min-h-12 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-700/20;
     }
+
+    .form-error {
+        @apply mt-2 text-sm font-medium text-red-700;
+    }
+
+    .honeypot {
+        @apply absolute -left-[10000px] top-auto h-px w-px overflow-hidden;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
