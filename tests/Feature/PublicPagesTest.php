@@ -58,6 +58,7 @@ class PublicPagesTest extends TestCase
         ]);
 
         $this->get(route('home'))
+            ->assertSee('data-contact-error-list', false)
             ->assertSee('href="#name"', false)
             ->assertSee('href="#email"', false)
             ->assertSee('href="#category"', false)

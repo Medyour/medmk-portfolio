@@ -126,15 +126,22 @@
                 @endif
 
                 @if ($errors->contact->any())
+                    @php
+                        $visibleErrorFields = collect(['name', 'email', 'organization', 'category', 'message', 'consent'])
+                            ->filter(fn (string $field) => $errors->contact->has($field));
+                    @endphp
                     <div data-contact-status tabindex="-1" role="alert" aria-labelledby="contact-errors-title" class="mb-6 rounded-xl border border-red-300 bg-red-50 p-4 text-red-950">
                         <p id="contact-errors-title" class="font-semibold">Vérifiez les informations du formulaire.</p>
-                        <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
-                            @foreach (['name', 'email', 'organization', 'category', 'message', 'consent'] as $field)
-                                @error($field, 'contact')
-                                    <li><a class="font-medium underline underline-offset-4" href="#{{ $field }}">{{ $message }}</a></li>
-                                @enderror
-                            @endforeach
-                        </ul>
+                        @if ($errors->contact->has('website'))
+                            <p data-contact-hidden-error class="mt-2 text-sm font-medium">{{ $errors->contact->first('website') }}</p>
+                        @endif
+                        @if ($visibleErrorFields->isNotEmpty())
+                            <ul data-contact-error-list class="mt-2 list-disc space-y-1 pl-5 text-sm">
+                                @foreach ($visibleErrorFields as $field)
+                                    <li><a class="font-medium underline underline-offset-4" href="#{{ $field }}">{{ $errors->contact->first($field) }}</a></li>
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 @endif
 

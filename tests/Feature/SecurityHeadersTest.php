@@ -27,7 +27,18 @@ class SecurityHeadersTest extends TestCase
             ->assertHeader('X-Frame-Options', 'SAMEORIGIN')
             ->assertHeader('Referrer-Policy', 'strict-origin-when-cross-origin')
             ->assertHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+            ->assertHeader('X-Robots-Tag', 'noindex, nofollow, noarchive')
             ->assertHeaderMissing('Strict-Transport-Security')
             ->assertHeaderMissing('Content-Security-Policy');
+    }
+
+    #[DataProvider('publicResources')]
+    public function test_x_robots_tag_is_absent_in_production(string $route): void
+    {
+        $this->app['env'] = 'production';
+
+        $this->get(route($route))
+            ->assertOk()
+            ->assertHeaderMissing('X-Robots-Tag');
     }
 }

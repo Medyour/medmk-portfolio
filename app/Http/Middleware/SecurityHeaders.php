@@ -17,6 +17,12 @@ class SecurityHeaders
         $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
         $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
+        if (! app()->environment('production')) {
+            $response->headers->set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+        } else {
+            $response->headers->remove('X-Robots-Tag');
+        }
+
         return $response;
     }
 }
