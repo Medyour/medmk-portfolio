@@ -62,9 +62,7 @@ class SeoMetadataTest extends TestCase
             ->assertSee('"@type":"Person"', false)
             ->assertSee('"name":"Mohamed M’Kirchel"', false)
             ->assertSee('"jobTitle":"Développeur senior"', false)
-            ->assertDontSee('sameAs', false)
-            ->assertDontSee('LeadOps', false)
-            ->assertDontSee('Medmk Portfolio', false);
+            ->assertDontSee('sameAs', false);
     }
 
     public function test_svg_favicon_is_declared_and_available(): void

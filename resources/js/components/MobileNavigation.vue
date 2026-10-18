@@ -48,6 +48,7 @@ const handleEscape = () => {
         >
             <a class="mobile-link" href="/#expertises" @click="closeMenu">Expertises</a>
             <a class="mobile-link" href="/#approche" @click="closeMenu">Approche</a>
+            <a class="mobile-link" href="/#projets" @click="closeMenu">Projets</a>
             <a class="mobile-link" href="/#a-propos" @click="closeMenu">À propos</a>
             <a class="mobile-link bg-sky-800 text-white hover:bg-sky-900 hover:text-white" href="/#contact" @click="closeMenu">
                 Étudier mon besoin

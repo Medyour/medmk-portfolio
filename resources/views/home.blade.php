@@ -83,6 +83,112 @@
         </div>
     </section>
 
+    <section id="projets" aria-labelledby="projects-title" class="section-space scroll-mt-8 bg-slate-100">
+        <div class="page-container">
+            <div class="grid gap-6 lg:grid-cols-[1fr_0.75fr] lg:items-end">
+                <div>
+                    <p class="eyebrow">Projets publics</p>
+                    <h2 id="projects-title" class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
+                        Deux applications métier, disponibles en démonstration
+                    </h2>
+                </div>
+                <p class="max-w-2xl leading-7 text-slate-600 lg:justify-self-end">
+                    Ces démonstrateurs utilisent exclusivement des données fictives et montrent le parcours complet, de la règle métier au suivi en production.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-8 xl:grid-cols-2">
+                <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+                    <div class="aspect-[8/5] overflow-hidden border-b border-slate-200 bg-emerald-950">
+                        <img
+                            src="{{ asset('images/projects/deskops.png') }}"
+                            alt="Page d’accueil de la démonstration DeskOps"
+                            width="1440"
+                            height="900"
+                            loading="lazy"
+                            decoding="async"
+                            class="h-full w-full object-cover object-top"
+                        >
+                    </div>
+                    <div class="p-7 sm:p-9">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <p class="text-sm font-semibold tracking-[0.12em] text-emerald-800 uppercase">Support client</p>
+                            <span class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-900">
+                                <span aria-hidden="true" class="size-2 rounded-full bg-emerald-500"></span>
+                                En production
+                            </span>
+                        </div>
+                        <h3 class="mt-5 text-3xl font-semibold tracking-tight text-slate-950">DeskOps</h3>
+                        <p class="mt-4 leading-7 text-slate-600">
+                            Un mini-centre de support pour centraliser les demandes, coordonner les agents et suivre les priorités avec un historique explicite.
+                        </p>
+                        <ul class="mt-6 grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-2">
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-emerald-700">✓</span> Rôles administrateur et agent</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-emerald-700">✓</span> Workflow et commentaires internes</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-emerald-700">✓</span> Tableau de bord opérationnel</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-emerald-700">✓</span> Reset quotidien des données fictives</li>
+                        </ul>
+                        <div class="mt-8 flex flex-wrap items-center gap-4">
+                            <a class="button-primary" href="https://deskops.mkirchel.com" target="_blank" rel="noopener noreferrer">
+                                Explorer DeskOps
+                                <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 17 17 7"></path>
+                                    <path d="M7 7h10v10"></path>
+                                </svg>
+                                <span class="sr-only"> (nouvel onglet)</span>
+                            </a>
+                            <span class="text-sm text-slate-500">Laravel · PostgreSQL · DigitalOcean</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+                    <div class="aspect-[8/5] overflow-hidden border-b border-slate-200 bg-blue-50">
+                        <img
+                            src="{{ asset('images/projects/leadops.png') }}"
+                            alt="Tableau de bord de la démonstration LeadOps"
+                            width="1440"
+                            height="900"
+                            loading="lazy"
+                            decoding="async"
+                            class="h-full w-full object-cover object-top"
+                        >
+                    </div>
+                    <div class="p-7 sm:p-9">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <p class="text-sm font-semibold tracking-[0.12em] text-blue-800 uppercase">Traitement de leads B2B</p>
+                            <span class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-950">
+                                <span aria-hidden="true" class="size-2 rounded-full bg-blue-500"></span>
+                                Démonstration en lecture seule
+                            </span>
+                        </div>
+                        <h3 class="mt-5 text-3xl font-semibold tracking-tight text-slate-950">LeadOps</h3>
+                        <p class="mt-4 leading-7 text-slate-600">
+                            Un pipeline déterministe qui rend chaque décision lisible, de la réception d’un lead fictif à son classement, son routage ou son traitement en exception.
+                        </p>
+                        <ul class="mt-6 grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-2">
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-blue-700">✓</span> Validation et normalisation</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-blue-700">✓</span> Déduplication et score reproductible</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-blue-700">✓</span> Routage et timeline explicable</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-blue-700">✓</span> File d’exceptions contrôlée</li>
+                        </ul>
+                        <div class="mt-8 flex flex-wrap items-center gap-4">
+                            <a class="button-primary" href="https://leadops.mkirchel.com" target="_blank" rel="noopener noreferrer">
+                                Explorer LeadOps
+                                <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 17 17 7"></path>
+                                    <path d="M7 7h10v10"></path>
+                                </svg>
+                                <span class="sr-only"> (nouvel onglet)</span>
+                            </a>
+                            <span class="text-sm text-slate-500">Laravel · Vue · SQLite · DigitalOcean</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <section id="a-propos" aria-labelledby="about-title" class="section-space scroll-mt-8 bg-white">
         <div class="page-container grid gap-12 lg:grid-cols-2 lg:gap-20">
             <div>

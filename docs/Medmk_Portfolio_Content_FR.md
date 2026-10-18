@@ -1,3 +1,7 @@
+# Mise à jour éditoriale — 18 octobre 2026
+
+DeskOps et LeadOps sont maintenant des démonstrateurs publics fonctionnels et validés. Leurs anciennes mentions « en préparation » ou « non développé » sont obsolètes et remplacées par la section 6 mise à jour ci-dessous. Medmk Portfolio reste exclu de ses propres réalisations.
+
 # 1. Accueil
 
 **Surtitre**  
@@ -318,40 +322,26 @@ En parallèle, je développe actuellement deux projets personnels destinés à d
 
 ---
 
-## Medmk Portfolio
+## DeskOps
 
-**Statut : projet personnel en préparation**
+**Statut : démonstration publique en production**
 
-Medmk Portfolio est le projet sur lequel repose ce site professionnel.
+DeskOps est un mini-centre de support client pour une petite équipe. Il présente des parcours administrateur et agent, un workflow de tickets, des commentaires internes, une chronologie d’activité et un tableau de bord opérationnel.
 
-Le socle Laravel du projet est actuellement initialisé et validé techniquement sur son environnement de développement.
-
-Les fonctionnalités métier et l’interface personnalisée sont encore en préparation et ne sont pas présentées comme des réalisations terminées.
-
-**Objectif du projet**  
-Construire progressivement un portfolio professionnel permettant de présenter mes services, ma méthode et des démonstrateurs réels sans transformer le projet en plateforme inutilement complexe.
+La démonstration utilise uniquement des données fictives, partagées et réinitialisées quotidiennement. Elle est disponible sur [deskops.mkirchel.com](https://deskops.mkirchel.com).
 
 ---
 
 ## LeadOps
 
-**Statut : démonstrateur spécifié mais non développé**
+**Statut : démonstration publique en lecture seule**
 
-LeadOps est un démonstrateur en préparation consacré à l’automatisation du traitement des prospects.
+LeadOps illustre un pipeline déterministe de traitement de leads B2B fictifs : validation, normalisation, déduplication, score, classification, routage, timeline et file d’exceptions.
 
-Le projet est actuellement au stade de la spécification fonctionnelle.
-
-Le scénario prévu explore notamment :
-- validation des informations entrantes ;
-- détection des doublons ;
-- scoring selon des règles explicites ;
-- routage des prospects ;
-- gestion des erreurs et des interventions humaines.
-
-LeadOps n’est pas présenté comme un produit commercial ou une solution déjà utilisée en production.
+La version publique ne reçoit aucune donnée réelle et n’appelle aucun CRM ou service de transmission externe. Elle est disponible sur [leadops.mkirchel.com](https://leadops.mkirchel.com).
 
 **Appel à l’action de la section**  
-**Me parler d’un processus similaire dans votre entreprise**
+**Explorer les démonstrations publiques**
 
 ---
 
@@ -625,24 +615,11 @@ La formulation **« JavaScript selon les besoins »** reste volontairement prude
 
 ## Medmk Portfolio
 
-Les seules affirmations techniques actuellement vérifiées sont :
-- Laravel 13.24 ;
-- PHP 8.3 ;
-- initialisation du projet ;
-- fichier `AGENTS.md` ;
-- `.gitignore` renforcé ;
-- Git initialisé sur `main` ;
-- commit initial ;
-- deux tests Laravel réussis ;
-- compilation Vite/Tailwind initiale réussie.
+Medmk Portfolio ne doit pas être présenté comme sa propre réalisation. Les fonctionnalités futures ne doivent jamais être décrites comme terminées avant leur validation.
 
-Aucune fonctionnalité future du portfolio ne doit être décrite comme terminée.
+## Projets publics
 
-## LeadOps
-
-LeadOps reste un **démonstrateur spécifié mais non développé**.
-
-Les fonctions de validation, déduplication, scoring et routage sont des fonctions prévues dans la spécification, pas encore des fonctionnalités démontrées.
+DeskOps et LeadOps peuvent être présentés avec les seuls faits documentés dans leurs dépôts et observables sur leurs démonstrations publiques. Ne pas leur attribuer de clients, de volumes réels, de gains chiffrés, d’intégration externe active ou d’utilisation commerciale.
 
 ## Liens sociaux
 

@@ -6,6 +6,7 @@
         </div>
         <nav aria-label="Navigation de pied de page" class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
             <a class="rounded-sm hover:text-white" href="{{ route('home') }}" @if(request()->routeIs('home')) aria-current="page" @endif>Accueil</a>
+            <a class="rounded-sm hover:text-white" href="{{ route('home') }}#projets">Projets</a>
             <a class="rounded-sm hover:text-white" href="{{ route('privacy') }}" @if(request()->routeIs('privacy')) aria-current="page" @endif>Confidentialité</a>
             <a class="rounded-sm hover:text-white" href="{{ route('legal') }}" @if(request()->routeIs('legal')) aria-current="page" @endif>Mentions légales</a>
         </nav>
