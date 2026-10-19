@@ -49,11 +49,13 @@ Ne jamais utiliser l’adresse du visiteur comme expéditeur. L’application l�
 
 La zone reste gérée par Cloudflare. DigitalOcean ne doit donc pas recevoir de champ `zone` dans l’App Spec.
 
-1. Dans les domaines de l’application, relever l’alias `*.ondigitalocean.app` fourni pour `mkirchel.com`.
-2. Dans Cloudflare DNS, créer un CNAME à la racine : nom `@`, cible égale à cet alias, mode **DNS only** et TTL automatique.
-3. Cloudflare aplatit automatiquement les CNAME placés à la racine de la zone.
+1. Dans les domaines de l’application, ajouter `mkirchel.com` en choisissant **You manage your domain**.
+2. Dans Cloudflare DNS, créer deux enregistrements A à la racine, nom `@`, vers `162.159.140.98` et `172.66.0.96`, en mode **DNS only** avec un TTL automatique. Ne pas conserver simultanément un CNAME à la racine.
+3. Préserver les enregistrements TXT de messagerie ainsi que les sous-domaines DeskOps, LeadOps et DKIM.
 4. Attendre que DigitalOcean indique le domaine `Active` et que son certificat soit émis. La propagation peut prendre jusqu’à 72 heures.
 5. Ne configurer `www.mkirchel.com` que dans une modification séparée, avec une redirection permanente explicite vers le domaine racine.
+
+Le domaine de départ généré lors de la création de cette application est `medmk-portfolio-gwyz4.ondigitalocean.app`. Il est volontairement inscrit littéralement dans la première règle d’ingress : App Platform ne fournit pas de variable `${STARTER_DOMAIN}`. Si l’application est recréée, remplacer cette valeur par son nouveau domaine de départ avant d’appliquer la spécification.
 
 ## Recette après activation
 
@@ -71,6 +73,6 @@ Après plusieurs jours de fonctionnement HTTPS stable, HSTS peut être étudié 
 ## Repli
 
 1. Dans App Platform, sélectionner le dernier déploiement sain et utiliser le rollback.
-2. Si le domaine est en cause, retirer temporairement le CNAME Cloudflare ou restaurer son ancienne valeur connue ; ne pas détruire l’application pendant le diagnostic.
+2. Si le domaine est en cause, retirer temporairement les deux enregistrements A Cloudflare ou restaurer leurs anciennes valeurs connues ; ne pas détruire l’application pendant le diagnostic.
 3. Si le courrier est en cause, corriger uniquement les variables SMTP chiffrées puis redéployer. Les erreurs restent génériques côté visiteur et détaillées uniquement dans les journaux.
 4. La destruction définitive de l’application et la suppression DNS sont deux opérations séparées. Vérifier leur cible exacte et conserver une copie de l’App Spec avant toute suppression.
