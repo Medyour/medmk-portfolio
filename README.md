@@ -41,6 +41,12 @@ npm audit --audit-level=low
 
 La CI exécute les validations du dépôt sur chaque pull request vers `main`. Les pages publiques, le formulaire, l’accessibilité structurelle, les métadonnées SEO et les en-têtes de sécurité sont couverts par des tests.
 
+## Déploiement
+
+La configuration de production cible un service PHP DigitalOcean App Platform à Londres, sans base de données et avec l’auto-déploiement désactivé. Elle est décrite dans [`.do/app.yaml`](.do/app.yaml). Les secrets applicatifs et SMTP restent exclusivement dans les variables chiffrées de la plateforme.
+
+Le déroulé complet — création de l’application, configuration du courrier, raccordement de `mkirchel.com`, recette et repli — se trouve dans [`docs/DIGITALOCEAN_RUNBOOK.md`](docs/DIGITALOCEAN_RUNBOOK.md).
+
 ## Confidentialité
 
 Les démonstrations n’utilisent aucune donnée client ou personnelle réelle. Ne jamais versionner `.env`, clé, jeton, identifiant, contenu de formulaire ou information professionnelle confidentielle.

@@ -17,7 +17,7 @@
             </section>
             <section>
                 <h2 class="text-2xl font-semibold text-slate-950">Hébergement</h2>
-                <p class="mt-3">Les informations relatives à l’hébergeur seront ajoutées avant la publication du site. Aucun hébergement ni service externe n’est configuré dans cette fondation locale.</p>
+                <p class="mt-3">Le site est hébergé par DigitalOcean, LLC, 105 Edgeview Drive, Suite 425, Broomfield, Colorado 80021, États-Unis. Site : <a class="font-semibold text-sky-800 underline underline-offset-4" href="https://www.digitalocean.com">digitalocean.com</a>.</p>
             </section>
         </div>
     </article>
