@@ -2,6 +2,8 @@
 
 Ce runbook publie `Medyour/medmk-portfolio` sur DigitalOcean App Platform et raccorde le domaine principal `mkirchel.com`. La configuration versionnée utilise un seul service PHP de 512 Mio à Londres, sans base de données et sans auto-déploiement.
 
+Le service utilise uniquement le buildpack PHP. Les assets Vite compilés sont donc versionnés dans `public/build` plutôt que reconstruits sur App Platform. La CI les reconstruit et échoue si le résultat diffère du dépôt.
+
 ## Coût et limites retenus
 
 - Service `apps-s-1vcpu-0.5gb` : 5 USD par mois, facturé à la seconde par DigitalOcean.
@@ -41,7 +43,7 @@ Ne jamais utiliser l’adresse du visiteur comme expéditeur. L’application l�
 2. Importer ou reproduire `.do/app.yaml`.
 3. Vérifier la région `LON`, le service `web`, une seule instance de 512 Mio et l’auto-déploiement désactivé.
 4. Ajouter les variables manuelles ci-dessus, puis lancer le déploiement.
-5. Confirmer dans les journaux que les assets Vite sont présents, que les caches Laravel sont construits et que `/health` répond en succès.
+5. Confirmer dans les journaux que le manifeste Vite versionné est présent, que les caches Laravel sont construits et que `/health` répond en succès.
 
 ## Domaine Cloudflare
 

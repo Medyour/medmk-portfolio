@@ -43,7 +43,7 @@ La CI exécute les validations du dépôt sur chaque pull request vers `main`. L
 
 ## Déploiement
 
-La configuration de production cible un service PHP DigitalOcean App Platform à Londres, sans base de données et avec l’auto-déploiement désactivé. Elle est décrite dans [`.do/app.yaml`](.do/app.yaml). Les secrets applicatifs et SMTP restent exclusivement dans les variables chiffrées de la plateforme.
+La configuration de production cible un service PHP DigitalOcean App Platform à Londres, sans base de données et avec l’auto-déploiement désactivé. Elle est décrite dans [`.do/app.yaml`](.do/app.yaml). Comme ce service utilise uniquement le buildpack PHP, les assets Vite compilés sont versionnés dans `public/build` et contrôlés par la CI. Les secrets applicatifs et SMTP restent exclusivement dans les variables chiffrées de la plateforme.
 
 Le déroulé complet — création de l’application, configuration du courrier, raccordement de `mkirchel.com`, recette et repli — se trouve dans [`docs/DIGITALOCEAN_RUNBOOK.md`](docs/DIGITALOCEAN_RUNBOOK.md).
 
