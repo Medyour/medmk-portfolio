@@ -4,6 +4,21 @@ Date de décision : 8 août 2026
 Statut : recommandation UX de référence pour la future tâche locale de développement  
 Périmètre : structure, contenu, conversion, responsive et accessibilité — aucun code
 
+## 0. Amendement — projets publics validés
+
+Date de décision : 18 octobre 2026
+
+DeskOps et LeadOps sont désormais fonctionnels, déployés et validés sur leurs domaines publics. Les règles antérieures qui imposaient leur absence sont donc remplacées par les décisions suivantes :
+
+- ajouter une section `Projets publics` entre `Approche` et `À propos` ;
+- ajouter `Projets` dans les navigations desktop, mobile et de pied de page ;
+- présenter uniquement DeskOps et LeadOps, avec leurs fonctionnalités effectivement démontrées et leurs liens publics ;
+- préciser que les deux applications utilisent des données fictives ;
+- conserver Medmk Portfolio hors de ses propres réalisations ;
+- conserver hors publication tout projet, client, témoignage ou résultat professionnel qui n’a pas reçu de validation individuelle.
+
+Cet amendement remplace les interdictions visant spécifiquement DeskOps, LeadOps et toute section de projets dans les sections 2, 3, 5, 9, 14 et 15 ci-dessous. Le reste de la recommandation UX demeure applicable.
+
 ## 1. Décision UX centrale
 
 Le MVP doit être une vitrine professionnelle courte, principalement en une page, conçue pour faire comprendre en quelques secondes trois résultats métier :

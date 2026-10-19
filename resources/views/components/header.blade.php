@@ -7,6 +7,7 @@
         <nav aria-label="Navigation principale" class="hidden items-center gap-7 md:flex">
             <a class="rounded-sm text-sm font-medium hover:text-sky-800" href="{{ route('home') }}#expertises">Expertises</a>
             <a class="rounded-sm text-sm font-medium hover:text-sky-800" href="{{ route('home') }}#approche">Approche</a>
+            <a class="rounded-sm text-sm font-medium hover:text-sky-800" href="{{ route('home') }}#projets">Projets</a>
             <a class="rounded-sm text-sm font-medium hover:text-sky-800" href="{{ route('home') }}#a-propos">À propos</a>
             <a class="button-primary min-h-11 px-5 py-2 text-sm" href="{{ route('home') }}#contact">Étudier mon besoin</a>
         </nav>

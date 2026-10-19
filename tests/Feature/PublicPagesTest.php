@@ -24,12 +24,21 @@ class PublicPagesTest extends TestCase
             ->assertSee($content);
     }
 
-    public function test_home_excludes_unpublished_work(): void
+    public function test_home_publishes_only_validated_public_projects(): void
     {
         $this->get(route('home'))
-            ->assertDontSee('LeadOps')
+            ->assertSee('Projets publics')
+            ->assertSee('DeskOps')
+            ->assertSee('LeadOps')
+            ->assertSee('https://deskops.mkirchel.com', false)
+            ->assertSee('https://leadops.mkirchel.com', false)
+            ->assertSee('images/projects/deskops.png', false)
+            ->assertSee('images/projects/leadops.png', false)
             ->assertDontSee('Medmk Portfolio')
-            ->assertDontSee('Réalisations');
+            ->assertDontSee('projet en préparation');
+
+        $this->assertFileExists(public_path('images/projects/deskops.png'));
+        $this->assertFileExists(public_path('images/projects/leadops.png'));
     }
 
     public function test_home_has_accessible_landmarks_and_form_associations(): void
