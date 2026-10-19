@@ -49,7 +49,7 @@ class AppSpecTest extends TestCase
 
         [$redirect, $webRoute] = $spec['ingress']['rules'];
         $this->assertSame([
-            'authority' => ['exact' => '${STARTER_DOMAIN}'],
+            'authority' => ['exact' => 'medmk-portfolio-gwyz4.ondigitalocean.app'],
             'path' => ['prefix' => '/'],
         ], $redirect['match']);
         $this->assertSame([
@@ -61,6 +61,7 @@ class AppSpecTest extends TestCase
         $this->assertSame('mkirchel.com', $webRoute['match']['authority']['exact']);
         $this->assertSame('/', $webRoute['match']['path']['prefix']);
         $this->assertSame('web', $webRoute['component']['name']);
+        $this->assertStringNotContainsString('${STARTER_DOMAIN}', file_get_contents(base_path('.do/app.yaml')));
     }
 
     public function test_runtime_configuration_is_database_free_and_contains_no_secret_value(): void

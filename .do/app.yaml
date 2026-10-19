@@ -7,7 +7,7 @@ ingress:
   rules:
     - match:
         authority:
-          exact: ${STARTER_DOMAIN}
+          exact: medmk-portfolio-gwyz4.ondigitalocean.app
         path:
           prefix: /
       redirect:
