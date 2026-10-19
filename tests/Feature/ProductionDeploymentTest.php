@@ -6,6 +6,20 @@ use Tests\TestCase;
 
 class ProductionDeploymentTest extends TestCase
 {
+    public function test_compiled_frontend_assets_are_shipped_with_the_php_service(): void
+    {
+        $manifestPath = public_path('build/manifest.json');
+
+        $this->assertFileExists($manifestPath);
+
+        $manifest = json_decode(file_get_contents($manifestPath), true, flags: JSON_THROW_ON_ERROR);
+
+        foreach (['resources/css/app.css', 'resources/js/app.js'] as $entrypoint) {
+            $this->assertArrayHasKey($entrypoint, $manifest);
+            $this->assertFileExists(public_path('build/'.$manifest[$entrypoint]['file']));
+        }
+    }
+
     public function test_health_route_is_available(): void
     {
         $this->get('/health')

@@ -68,5 +68,14 @@ jobs:
       - name: Build production assets
         run: npm run build
 
+      - name: Verify production assets are committed
+        run: |
+          if [ -n "$(git status --porcelain -- public/build)" ]; then
+            echo "Production assets are not synchronized with the Vite build."
+            git status --short -- public/build
+            git diff -- public/build
+            exit 1
+          fi
+
       - name: Run Laravel tests
         run: php artisan test

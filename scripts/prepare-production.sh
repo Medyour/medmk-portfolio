@@ -8,7 +8,10 @@ cd -- "${repository_root}"
 
 composer install --no-dev --no-interaction --no-progress --prefer-dist --optimize-autoloader
 composer audit --locked --no-interaction
-test -s public/build/manifest.json
+test -s public/build/manifest.json || {
+    echo "Production Vite assets are missing. Run 'npm ci && npm run build' and commit public/build." >&2
+    exit 1
+}
 
 APP_ENV=production APP_DEBUG=false php artisan route:cache --no-interaction
 APP_ENV=production APP_DEBUG=false php artisan event:cache --no-interaction
