@@ -30,15 +30,19 @@ class PublicPagesTest extends TestCase
             ->assertSee('Projets publics')
             ->assertSee('DeskOps')
             ->assertSee('LeadOps')
+            ->assertSee('SyncOps')
             ->assertSee('https://deskops.mkirchel.com', false)
             ->assertSee('https://leadops.mkirchel.com', false)
+            ->assertSee('https://syncops.mkirchel.com', false)
             ->assertSee('images/projects/deskops.png', false)
             ->assertSee('images/projects/leadops.png', false)
+            ->assertSee('images/projects/syncops.png', false)
             ->assertDontSee('Medmk Portfolio')
             ->assertDontSee('projet en préparation');
 
         $this->assertFileExists(public_path('images/projects/deskops.png'));
         $this->assertFileExists(public_path('images/projects/leadops.png'));
+        $this->assertFileExists(public_path('images/projects/syncops.png'));
     }
 
     public function test_home_has_accessible_landmarks_and_form_associations(): void

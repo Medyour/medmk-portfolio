@@ -51,7 +51,7 @@ La zone reste gérée par Cloudflare. DigitalOcean ne doit donc pas recevoir de 
 
 1. Dans les domaines de l’application, ajouter `mkirchel.com` en choisissant **You manage your domain**.
 2. Dans Cloudflare DNS, créer deux enregistrements A à la racine, nom `@`, vers `162.159.140.98` et `172.66.0.96`, en mode **DNS only** avec un TTL automatique. Ne pas conserver simultanément un CNAME à la racine.
-3. Préserver les enregistrements TXT de messagerie ainsi que les sous-domaines DeskOps, LeadOps et DKIM.
+3. Préserver les enregistrements TXT de messagerie ainsi que les sous-domaines DeskOps, LeadOps, SyncOps et DKIM.
 4. Attendre que DigitalOcean indique le domaine `Active` et que son certificat soit émis. La propagation peut prendre jusqu’à 72 heures.
 5. Ne configurer `www.mkirchel.com` que dans une modification séparée, avec une redirection permanente explicite vers le domaine racine.
 

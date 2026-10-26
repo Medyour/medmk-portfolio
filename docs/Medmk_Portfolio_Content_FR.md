@@ -1,6 +1,6 @@
-# Mise à jour éditoriale — 18 octobre 2026
+# Mise à jour éditoriale — 26 octobre 2026
 
-DeskOps et LeadOps sont maintenant des démonstrateurs publics fonctionnels et validés. Leurs anciennes mentions « en préparation » ou « non développé » sont obsolètes et remplacées par la section 6 mise à jour ci-dessous. Medmk Portfolio reste exclu de ses propres réalisations.
+DeskOps, LeadOps et SyncOps sont maintenant des démonstrateurs publics fonctionnels et validés. Leurs anciennes mentions « en préparation » ou « non développé » sont obsolètes et remplacées par la section 6 mise à jour ci-dessous. Medmk Portfolio reste exclu de ses propres réalisations.
 
 # 1. Accueil
 
@@ -318,7 +318,7 @@ Je privilégie donc une présentation responsable : aucune information concernan
 
 Certaines réalisations professionnelles pourront être présentées individuellement après vérification de leur niveau d’anonymisation et de mes obligations de confidentialité.
 
-En parallèle, je développe actuellement deux projets personnels destinés à démontrer publiquement mon approche.
+En parallèle, je présente trois projets personnels destinés à démontrer publiquement mon approche.
 
 ---
 
@@ -339,6 +339,16 @@ La démonstration utilise uniquement des données fictives, partagées et réini
 LeadOps illustre un pipeline déterministe de traitement de leads B2B fictifs : validation, normalisation, déduplication, score, classification, routage, timeline et file d’exceptions.
 
 La version publique ne reçoit aucune donnée réelle et n’appelle aucun CRM ou service de transmission externe. Elle est disponible sur [leadops.mkirchel.com](https://leadops.mkirchel.com).
+
+---
+
+## SyncOps
+
+**Statut : démonstration publique en production**
+
+SyncOps illustre le traitement fiable de webhooks fictifs : vérification HMAC, idempotence, file d’attente, reprises bornées, quarantaine, rejeu manuel et chronologie observable.
+
+Les connecteurs et les destinations sont entièrement simulés. La version publique n’accepte aucune destination réseau arbitraire et n’envoie aucune donnée vers un service tiers. Elle est disponible sur [syncops.mkirchel.com](https://syncops.mkirchel.com).
 
 **Appel à l’action de la section**  
 **Explorer les démonstrations publiques**
@@ -619,7 +629,7 @@ Medmk Portfolio ne doit pas être présenté comme sa propre réalisation. Les f
 
 ## Projets publics
 
-DeskOps et LeadOps peuvent être présentés avec les seuls faits documentés dans leurs dépôts et observables sur leurs démonstrations publiques. Ne pas leur attribuer de clients, de volumes réels, de gains chiffrés, d’intégration externe active ou d’utilisation commerciale.
+DeskOps, LeadOps et SyncOps peuvent être présentés avec les seuls faits documentés dans leurs dépôts et observables sur leurs démonstrations publiques. Ne pas leur attribuer de clients, de volumes réels, de gains chiffrés, d’intégration externe active ou d’utilisation commerciale.
 
 ## Liens sociaux
 
