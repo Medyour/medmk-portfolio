@@ -2,10 +2,11 @@
 
 Portfolio professionnel de Mohamed M’Kirchel, développeur senior spécialisé en automatisation, intégration API, bases de données et applications web métier.
 
-Le site présente une approche orientée problèmes opérationnels, un formulaire de prise de contact et deux démonstrateurs publics utilisant exclusivement des données fictives :
+Le site présente une approche orientée problèmes opérationnels, un formulaire de prise de contact et trois démonstrateurs publics utilisant exclusivement des données fictives :
 
 - [DeskOps](https://deskops.mkirchel.com), mini-centre de support client avec rôles, workflow, historique et tableau de bord ;
-- [LeadOps](https://leadops.mkirchel.com), pipeline déterministe de traitement de leads B2B fictifs, publié en lecture seule.
+- [LeadOps](https://leadops.mkirchel.com), pipeline déterministe de traitement de leads B2B fictifs, publié en lecture seule ;
+- [SyncOps](https://syncops.mkirchel.com), démonstration de traitement fiable de webhooks avec idempotence, reprises, quarantaine et observabilité.
 
 ## Stack
 

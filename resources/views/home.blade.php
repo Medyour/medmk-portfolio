@@ -89,7 +89,7 @@
                 <div>
                     <p class="eyebrow">Projets publics</p>
                     <h2 id="projects-title" class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                        Deux applications métier, disponibles en démonstration
+                        Trois applications métier, disponibles en démonstration
                     </h2>
                 </div>
                 <p class="max-w-2xl leading-7 text-slate-600 lg:justify-self-end">
@@ -97,7 +97,7 @@
                 </p>
             </div>
 
-            <div class="mt-12 grid gap-8 xl:grid-cols-2">
+            <div class="mt-12 grid gap-8 xl:grid-cols-3">
                 <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
                     <div class="aspect-[8/5] overflow-hidden border-b border-slate-200 bg-emerald-950">
                         <img
@@ -182,6 +182,50 @@
                                 <span class="sr-only"> (nouvel onglet)</span>
                             </a>
                             <span class="text-sm text-slate-500">Laravel · Vue · SQLite · DigitalOcean</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+                    <div class="aspect-[8/5] overflow-hidden border-b border-slate-200 bg-slate-950">
+                        <img
+                            src="{{ asset('images/projects/syncops.png') }}"
+                            alt="Tableau de bord d’observabilité de la démonstration SyncOps"
+                            width="1866"
+                            height="968"
+                            loading="lazy"
+                            decoding="async"
+                            class="h-full w-full object-cover object-top"
+                        >
+                    </div>
+                    <div class="p-7 sm:p-9">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <p class="text-sm font-semibold tracking-[0.12em] text-teal-800 uppercase">Fiabilité des webhooks</p>
+                            <span class="inline-flex items-center gap-2 rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-950">
+                                <span aria-hidden="true" class="size-2 rounded-full bg-teal-500"></span>
+                                En production
+                            </span>
+                        </div>
+                        <h3 class="mt-5 text-3xl font-semibold tracking-tight text-slate-950">SyncOps</h3>
+                        <p class="mt-4 leading-7 text-slate-600">
+                            Un pipeline de webhooks qui rend visibles la réception, les tentatives automatiques, les reprises et les événements nécessitant une intervention.
+                        </p>
+                        <ul class="mt-6 grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-2">
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-teal-700">✓</span> Signature HMAC et idempotence</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-teal-700">✓</span> File asynchrone et reprises bornées</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-teal-700">✓</span> Quarantaine et rejeu manuel</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-teal-700">✓</span> Journal, tentatives et chronologie</li>
+                        </ul>
+                        <div class="mt-8 flex flex-wrap items-center gap-4">
+                            <a class="button-primary" href="https://syncops.mkirchel.com" target="_blank" rel="noopener noreferrer">
+                                Explorer SyncOps
+                                <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 17 17 7"></path>
+                                    <path d="M7 7h10v10"></path>
+                                </svg>
+                                <span class="sr-only"> (nouvel onglet)</span>
+                            </a>
+                            <span class="text-sm text-slate-500">Laravel · PostgreSQL · Worker · DigitalOcean</span>
                         </div>
                     </div>
                 </article>
