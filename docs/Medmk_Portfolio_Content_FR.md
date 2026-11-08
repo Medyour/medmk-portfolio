@@ -1,6 +1,6 @@
-# Mise à jour éditoriale — 26 octobre 2026
+# Mise à jour éditoriale — 8 novembre 2026
 
-DeskOps, LeadOps et SyncOps sont maintenant des démonstrateurs publics fonctionnels et validés. Leurs anciennes mentions « en préparation » ou « non développé » sont obsolètes et remplacées par la section 6 mise à jour ci-dessous. Medmk Portfolio reste exclu de ses propres réalisations.
+DeskOps, LeadOps, SyncOps et ReconcileOps sont maintenant des démonstrateurs publics fonctionnels et validés. Leurs anciennes mentions « en préparation » ou « non développé » sont obsolètes et remplacées par la section 6 mise à jour ci-dessous. Medmk Portfolio reste exclu de ses propres réalisations.
 
 # 1. Accueil
 
@@ -318,7 +318,7 @@ Je privilégie donc une présentation responsable : aucune information concernan
 
 Certaines réalisations professionnelles pourront être présentées individuellement après vérification de leur niveau d’anonymisation et de mes obligations de confidentialité.
 
-En parallèle, je présente trois projets personnels destinés à démontrer publiquement mon approche.
+En parallèle, je présente quatre projets personnels destinés à démontrer publiquement mon approche.
 
 ---
 
@@ -349,6 +349,16 @@ La version publique ne reçoit aucune donnée réelle et n’appelle aucun CRM o
 SyncOps illustre le traitement fiable de webhooks fictifs : vérification HMAC, idempotence, file d’attente, reprises bornées, quarantaine, rejeu manuel et chronologie observable.
 
 Les connecteurs et les destinations sont entièrement simulés. La version publique n’accepte aucune destination réseau arbitraire et n’envoie aucune donnée vers un service tiers. Elle est disponible sur [syncops.mkirchel.com](https://syncops.mkirchel.com).
+
+---
+
+## ReconcileOps
+
+**Statut : démonstration publique en lecture seule**
+
+ReconcileOps rapproche deux lots fictifs avec des règles déterministes. Chaque correspondance est expliquée et les exceptions — doublons, absences, ambiguïtés ou écarts — restent consultables dans des vues filtrables.
+
+La version publique ne permet ni import de données ni décision d’exception. Elle est disponible sur [reconcileops.mkirchel.com](https://reconcileops.mkirchel.com).
 
 **Appel à l’action de la section**  
 **Explorer les démonstrations publiques**
@@ -629,7 +639,7 @@ Medmk Portfolio ne doit pas être présenté comme sa propre réalisation. Les f
 
 ## Projets publics
 
-DeskOps, LeadOps et SyncOps peuvent être présentés avec les seuls faits documentés dans leurs dépôts et observables sur leurs démonstrations publiques. Ne pas leur attribuer de clients, de volumes réels, de gains chiffrés, d’intégration externe active ou d’utilisation commerciale.
+DeskOps, LeadOps, SyncOps et ReconcileOps peuvent être présentés avec les seuls faits documentés dans leurs dépôts et observables sur leurs démonstrations publiques. Ne pas leur attribuer de clients, de volumes réels, de gains chiffrés, d’intégration externe active ou d’utilisation commerciale.
 
 ## Liens sociaux
 
