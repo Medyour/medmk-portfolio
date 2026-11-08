@@ -89,7 +89,7 @@
                 <div>
                     <p class="eyebrow">Projets publics</p>
                     <h2 id="projects-title" class="mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-                        Trois applications métier, disponibles en démonstration
+                        Quatre applications métier, disponibles en démonstration
                     </h2>
                 </div>
                 <p class="max-w-2xl leading-7 text-slate-600 lg:justify-self-end">
@@ -97,7 +97,7 @@
                 </p>
             </div>
 
-            <div class="mt-12 grid gap-8 xl:grid-cols-3">
+            <div class="mt-12 grid gap-8 lg:grid-cols-2">
                 <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
                     <div class="aspect-[8/5] overflow-hidden border-b border-slate-200 bg-emerald-950">
                         <img
@@ -226,6 +226,50 @@
                                 <span class="sr-only"> (nouvel onglet)</span>
                             </a>
                             <span class="text-sm text-slate-500">Laravel · PostgreSQL · Worker · DigitalOcean</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+                    <div class="aspect-[8/5] overflow-hidden border-b border-slate-200 bg-slate-950">
+                        <img
+                            src="{{ asset('images/projects/reconcileops.png') }}"
+                            alt="Vue des correspondances expliquées dans la démonstration ReconcileOps"
+                            width="1555"
+                            height="942"
+                            loading="lazy"
+                            decoding="async"
+                            class="h-full w-full scale-[1.12] object-cover object-bottom"
+                        >
+                    </div>
+                    <div class="p-7 sm:p-9">
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <p class="text-sm font-semibold tracking-[0.12em] text-cyan-800 uppercase">Rapprochement de données</p>
+                            <span class="inline-flex items-center gap-2 rounded-full bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-950">
+                                <span aria-hidden="true" class="size-2 rounded-full bg-cyan-500"></span>
+                                Démonstration en lecture seule
+                            </span>
+                        </div>
+                        <h3 class="mt-5 text-3xl font-semibold tracking-tight text-slate-950">ReconcileOps</h3>
+                        <p class="mt-4 leading-7 text-slate-600">
+                            Un rapprochement déterministe de deux lots fictifs qui explique chaque correspondance et rend visibles les écarts à examiner.
+                        </p>
+                        <ul class="mt-6 grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-2">
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-cyan-700">✓</span> Import CSV et normalisation</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-cyan-700">✓</span> Règles de rapprochement explicables</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-cyan-700">✓</span> Doublons, absences et écarts</li>
+                            <li class="flex gap-2"><span aria-hidden="true" class="text-cyan-700">✓</span> Historique et vues filtrables</li>
+                        </ul>
+                        <div class="mt-8 flex flex-wrap items-center gap-4">
+                            <a class="button-primary" href="https://reconcileops.mkirchel.com" target="_blank" rel="noopener noreferrer">
+                                Explorer ReconcileOps
+                                <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M7 17 17 7"></path>
+                                    <path d="M7 7h10v10"></path>
+                                </svg>
+                                <span class="sr-only"> (nouvel onglet)</span>
+                            </a>
+                            <span class="text-sm text-slate-500">Laravel · PostgreSQL · DigitalOcean</span>
                         </div>
                     </div>
                 </article>

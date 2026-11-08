@@ -6,18 +6,18 @@ Périmètre : structure, contenu, conversion, responsive et accessibilité — a
 
 ## 0. Amendement — projets publics validés
 
-Date de décision : 26 octobre 2026
+Date de décision : 26 octobre 2026 ; mise à jour : 8 novembre 2026
 
-DeskOps, LeadOps et SyncOps sont désormais fonctionnels, déployés et validés sur leurs domaines publics. Les règles antérieures qui imposaient leur absence sont donc remplacées par les décisions suivantes :
+DeskOps, LeadOps, SyncOps et ReconcileOps sont désormais fonctionnels, déployés et validés sur leurs domaines publics. Les règles antérieures qui imposaient leur absence sont donc remplacées par les décisions suivantes :
 
 - ajouter une section `Projets publics` entre `Approche` et `À propos` ;
 - ajouter `Projets` dans les navigations desktop, mobile et de pied de page ;
-- présenter uniquement DeskOps, LeadOps et SyncOps, avec leurs fonctionnalités effectivement démontrées et leurs liens publics ;
-- préciser que les trois applications utilisent des données fictives ;
+- présenter uniquement DeskOps, LeadOps, SyncOps et ReconcileOps, avec leurs fonctionnalités effectivement démontrées et leurs liens publics ;
+- préciser que les quatre applications utilisent des données fictives et que ReconcileOps est public en lecture seule ;
 - conserver Medmk Portfolio hors de ses propres réalisations ;
 - conserver hors publication tout projet, client, témoignage ou résultat professionnel qui n’a pas reçu de validation individuelle.
 
-Cet amendement remplace les interdictions visant spécifiquement DeskOps, LeadOps, SyncOps et toute section de projets dans les sections 2, 3, 5, 9, 14 et 15 ci-dessous. Le reste de la recommandation UX demeure applicable.
+Cet amendement remplace les interdictions visant spécifiquement ces quatre projets et toute section de projets dans les sections 2, 3, 5, 9, 14 et 15 ci-dessous. Le reste de la recommandation UX demeure applicable.
 
 ## 1. Décision UX centrale
 
